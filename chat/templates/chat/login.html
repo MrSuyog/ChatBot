@@ -1,0 +1,70 @@
+
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Login</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    *{box-sizing:border-box}
+    body{margin:0;min-height:100vh;display:grid;place-items:center;
+      font-family:Inter,system-ui,Arial,sans-serif;background:#0f172a;color:#e5e7eb}
+    .card{width:min(420px,92vw);padding:22px;border-radius:14px;background:#0b1220cc;
+      border:1px solid #ffffff22}
+    h1{margin:0 0 12px;font-size:20px}
+    label{display:block;margin:8px 0 4px;font-size:13px;color:#cbd5e1}
+    input{width:100%;padding:12px 14px;border:1px solid #243144;border-radius:10px;
+      background:#0b1324;color:#e5e7eb;outline:0}
+    button{width:100%;margin-top:10px;height:44px;border:0;border-radius:10px;cursor:pointer;
+      background:linear-gradient(135deg,#38bdf8,#a78bfa);color:#fff;font-weight:700}
+    a{color:#93c5fd;text-decoration:none;font-size:13px}
+    .toast{position:fixed;top:18px;right:18px;padding:12px 16px;border-radius:10px;
+      background:#103b1a;color:#b7f4c1;box-shadow:0 8px 24px rgba(0,0,0,.35);
+      opacity:0;transform:translateY(-8px);transition:all .25s ease;z-index:9999}
+    .toast.show{opacity:1;transform:none}
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h1>Sign in</h1>
+    <form id="loginForm" method="post" action="/login/" novalidate>
+      <label>Username
+        <input name="username" required minlength="6" maxlength="6"
+               pattern="[A-Za-z0-9]{6}" title="Exactly 6 letters or digits"
+               autocomplete="username" autocapitalize="none" spellcheck="false" placeholder="Enter your Username"/>
+      </label>
+      <label>Password
+        <input name="password" type="password" required autocomplete="current-password" placeholder="Enter your Password"/>
+      </label>
+      <button type="submit">Login</button>
+      <div style="margin-top:8px;text-align:right;">
+        <a href="/register/">Create account</a>
+      </div>
+    </form>
+  </div>
+
+  <div id="regToast" class="toast">Account created successfully. Please sign in.</div>
+
+  <script>
+    (function () {
+      const params = new URLSearchParams(location.search);
+      const isRegistered = params.get('registered') === '1';
+      const toast = document.getElementById('regToast');
+      const form = document.getElementById('loginForm');
+
+      if (isRegistered) {
+        // Show toast on the login page (optional)
+        setTimeout(() => toast.classList.add('show'), 80);
+        setTimeout(() => toast.classList.remove('show'), 4200);
+
+        // Preserve flag through POST so we can show toast on chat page after login
+        const hidden = document.createElement('input');
+        hidden.type = 'hidden';
+        hidden.name = 'registered';
+        hidden.value = '1';
+        form.appendChild(hidden);
+      }
+    })();
+  </script>
+</body>
+</html>
