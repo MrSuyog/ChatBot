@@ -39,21 +39,21 @@ QUICK START
 
 Requirements
 
-Python 3.10+ and pip
-Git (if cloning)
-SQLite (bundled with Python)
-Create and activate virtualenv
+-Python 3.10+ and pip
+-Git (if cloning)
+-SQLite (bundled with Python)
+-Create and activate virtualenv
 
-Windows (CMD/PowerShell)
-python -m venv venv
-venv\Scripts\activate
+-Windows (CMD/PowerShell)
+-python -m venv venv
+-venv\Scripts\activate
 
-macOS/Linux
-python3 -m venv venv
-source venv/bin/activate
+-macOS/Linux
+-python3 -m venv venv
+-source venv/bin/activate
 
 Install dependencies
-pip install -r requirements.txt
+-pip install -r requirements.txt
 
 Environment variables (create .env next to manage.py)
 DJANGO_SECRET_KEY=replace-with-a-strong-random-key
@@ -61,14 +61,14 @@ DEBUG=True
 ALLOWED_HOSTS=127.0.0.1,localhost
 
 Migrate and run
-python manage.py makemigrations chat
-python manage.py migrate
-python manage.py runserver
-Open http://127.0.0.1:8000
+-python manage.py makemigrations chat
+-python manage.py migrate
+-python manage.py runserver
+-Open http://127.0.0.1:8000
 
 Create admin user (optional)
-python manage.py createsuperuser
-Open http://127.0.0.1:8000/admin
+-python manage.py createsuperuser
+-Open http://127.0.0.1:8000/admin
 
 HOW IT WORKS
 
