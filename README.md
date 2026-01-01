@@ -1,4 +1,7 @@
 Overview
+
+
+
 A simple Django-based chatbot with per-user chat history and a small memory (preferred name). Users register/login, chat with a rule-based bot, and see only their own history.
 
 Repository
